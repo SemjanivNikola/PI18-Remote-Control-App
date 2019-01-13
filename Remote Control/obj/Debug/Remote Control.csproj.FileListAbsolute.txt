@@ -1,0 +1,79 @@
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.csprojAssemblyReference.cache
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.View.UseControl.DishWashPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.DelDevPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.MainForm.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.ImpDevPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.ImpPropPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.Properties.Resources.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.LightsPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.RefriPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.StovePanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.csproj.GenerateResource.cache
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.csproj.CoreCompileInputs.cache
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\Remote Control.exe.config
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\Remote Control.exe
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\Remote Control.pdb
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\ClassLibrary.dll
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\System.Data.SQLite.dll
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\ClassLibrary.pdb
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\System.Data.SQLite.xml
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\bin\Debug\System.Data.SQLite.dll.config
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.View.UseControl.UserControl1.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote_Control.View.UseControl.WaterHeaterPanel.resources
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.csproj.CopyComplete
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.exe
+E:\Nikola Projekt\Aplikacija\New -Vladimir\Remote Control\obj\Debug\Remote Control.pdb
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\Remote Control.exe.config
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\Remote Control.exe
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\Remote Control.pdb
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\ClassLibrary.dll
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.dll
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\ClassLibrary.pdb
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.xml
+E:\Nikola Projekt\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.dll.config
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.csprojAssemblyReference.cache
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.DelDevPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.MainForm.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.ImpDevPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.ImpPropPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.Properties.Resources.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.LightsPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.RefriPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.StovePanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.View.UseControl.WaterHeaterPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.GenerateResource.cache
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.CoreCompileInputs.cache
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.CopyComplete
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.exe
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote Control.pdb
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.DishWashPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.WashingMsnPanel.resources
+E:\Nikola Projekt\Aplikacija\Remote Control\obj\Debug\Remote_Control.ConnDevPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\Remote Control.exe.config
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\Remote Control.exe
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\Remote Control.pdb
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\ClassLibrary.dll
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.dll
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\ClassLibrary.pdb
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.xml
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\bin\Debug\System.Data.SQLite.dll.config
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.csprojAssemblyReference.cache
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.ConnDevPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.DelDevPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.MainForm.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.ImpDevPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.ImpPropPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.Properties.Resources.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.LightsPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.RefriPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.StovePanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.GenerateResource.cache
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.CoreCompileInputs.cache
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.csproj.CopyComplete
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.exe
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote Control.pdb
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.DisWasherPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.WasMachinePanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.WtrHtrPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.ListDevPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.View.UseControl.Devices.AirCondPanel.resources
