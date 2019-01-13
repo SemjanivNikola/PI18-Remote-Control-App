@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DB62C126-ACFC-4D0B-9AEC-0C6A78F15ED9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Remote_Control</RootNamespace>
+    <AssemblyName>Remote Control</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SQLite.NET, Version=0.21.1869.3794, Culture=neutral, PublicKeyToken=c273bd375e695f9c">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SQLite.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.109.2\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="View\UseControl\Devices\AirCondPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\AirCondPanel.designer.cs">
+      <DependentUpon>AirCondPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ListDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ListDevPanel.Designer.cs">
+      <DependentUpon>ListDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\DisWashPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\DisWashPanel.designer.cs">
+      <DependentUpon>DisWashPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\SwitchPanel.cs" />
+    <Compile Include="Model\TableFill.cs" />
+    <Compile Include="View\UseControl\Controls\ConnDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ConnDevPanel.Designer.cs">
+      <DependentUpon>ConnDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter\ActiveButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\DataAccess.cs" />
+    <Compile Include="View\UseControl\Controls\DelDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\DelDevPanel.Designer.cs">
+      <DependentUpon>DelDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ImpDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ImpDevPanel.Designer.cs">
+      <DependentUpon>ImpDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ImpPropPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ImpPropPanel.designer.cs">
+      <DependentUpon>ImpPropPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\UseControl\Devices\LightsPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\LightsPanel.Designer.cs">
+      <DependentUpon>LightsPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\RefriPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\RefriPanel.Designer.cs">
+      <DependentUpon>RefriPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\StovePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\StovePanel.Designer.cs">
+      <DependentUpon>StovePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\WasMachinePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\WasMachinePanel.designer.cs">
+      <DependentUpon>WasMachinePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\WtrHtrPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\WtrHtrPanel.designer.cs">
+      <DependentUpon>WtrHtrPanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\UseControl\Devices\AirCondPanel.resx">
+      <DependentUpon>AirCondPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\ListDevPanel.resx">
+      <DependentUpon>ListDevPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\DisWashPanel.resx">
+      <DependentUpon>DisWashPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\ConnDevPanel.resx">
+      <DependentUpon>ConnDevPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\DelDevPanel.resx">
+      <DependentUpon>DelDevPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\ImpDevPanel.resx">
+      <DependentUpon>ImpDevPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\ImpPropPanel.resx">
+      <DependentUpon>ImpPropPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\UseControl\Devices\LightsPanel.resx">
+      <DependentUpon>LightsPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\RefriPanel.resx">
+      <DependentUpon>RefriPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\StovePanel.resx">
+      <DependentUpon>StovePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\WasMachinePanel.resx">
+      <DependentUpon>WasMachinePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\WtrHtrPanel.resx">
+      <DependentUpon>WtrHtrPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\AddGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\DeleteGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ConnectGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\List.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\ListGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary2\ClassLibrary.csproj">
+      <Project>{8236ddc6-8955-4772-be8f-6183589e1a38}</Project>
+      <Name>ClassLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\RefreshGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\CurrentGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Current.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Logo\logo130.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\Logo\logo720.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\leftGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icons\rightGray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\Dishwasher Resources\cutlery.jpg" />
+    <Content Include="Icons\Dishwasher Resources\eigdegree.JPG" />
+    <Content Include="Icons\Dishwasher Resources\sevdegree.JPG" />
+    <Content Include="Icons\Dishwasher Resources\sixdegree.JPG" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>
