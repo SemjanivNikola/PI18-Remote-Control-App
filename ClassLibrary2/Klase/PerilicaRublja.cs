@@ -13,13 +13,6 @@ namespace ClassLibrary.Klase
         public int Temp { get; set; }
 
         public Enumeracija.ProgramPranja OdabirPrograma { get; set; }
-        public decimal WashingTime()
-        {
-            return 0;
-        }
-        public decimal DelayTime()
-        {
-            return 0;
         }
     }
 }

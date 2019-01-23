@@ -23,7 +23,7 @@ namespace ClassLibrary
         public int BrPloca { get; set; }
         public int TemperaturaPloce { get; set; }
 
-        public int TemperaturaPlus()    //Gdje je IdPloce jednak se treba jos dodat 
+        public int TemperaturaPlus()
         {
             return TemperaturaPloce++;
         }
@@ -36,6 +36,6 @@ namespace ClassLibrary
 
     public class Pecnica : Stednjak
     {
-        //public int Temperatura() { } //Enumeracija - za ovo cu vidit kako bude izgledalo u sucelju, za sad sam samo napravio enumeraciju za ovo
+        
     }
 }

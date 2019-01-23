@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    public class MrezaSijalica : Device     //Za ovo jos treba vidit, ne znam kako ce mo ovo tocno implementirat
+    public class MrezaSijalica : Device     
     {
         public int Lux { get; set; }
         public int IdMreze { get; set; }
@@ -19,10 +19,5 @@ namespace ClassLibrary
         {
             return Lux--;
         }
-    }
-
-    public class Sijalica : MrezaSijalica
-    {
-        public int IdSijalice { get; set; }
     }
 }

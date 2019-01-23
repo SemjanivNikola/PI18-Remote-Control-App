@@ -29,13 +29,13 @@ namespace ClassLibrary.Klase
         };
         public enum TimerPecnica
         {
-            [Description("5 min")] m5,
-            [Description("15 min")] m15,
-            [Description("30 min")] m30,
-            [Description("45 min")] m45,
-            [Description("60 min")] m60,
-            [Description("90 min")] m90,
-            [Description("120 min")] m120
+            [Description("5")] m5,
+            [Description("15")] m15,
+            [Description("30")] m30,
+            [Description("45")] m45,
+            [Description("60")] m60,
+            [Description("90")] m90,
+            [Description("120")] m120
         };
         public enum ModeAC { Cold, Warm, Dry };
         public enum ModeWM { Start, Stop, Pause };

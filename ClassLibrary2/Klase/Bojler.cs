@@ -8,15 +8,13 @@ namespace ClassLibrary
 {
     public class Bojler : Device
     {
-        public int Plin { get; set; }
-        public int Co2 { get; set; }
+        public static int Plin { get; set; }
+        public static int Co2 { get; set; }
 
-        public decimal OcitavanjePlina() {
+        public  static decimal OcitavanjePlina() {
             Random rand = new Random();
             Plin = rand.Next(1, 30);
             return Plin;
         }
-
-     //   public decimal OmjerCo2() { } visak jer je isto
     }
 }

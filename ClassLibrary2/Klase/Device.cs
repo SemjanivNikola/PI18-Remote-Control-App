@@ -11,18 +11,20 @@ namespace ClassLibrary
         public static string Naziv { get; set; }
         public static string serialNum { get; set; }
         public static  string Type { get; set; }
-        public int Broj { get; set; }
+        public static bool On = false;
         public string Lozinka { get; set; }
         public static string Model { get; set; }
+        public static bool favorit { get; set; }
 
         public DateTime Device_connected { get; set; }
 
-        //public bool OnOff() {}
 
-
-        //public int RegTemp() {  }
-
-        //public int RegVre() {  }
-
+        public static bool CheckOnOff()
+        {
+            if (On == true)
+                return true;
+            else
+                return false;
+        }
     }
 }
