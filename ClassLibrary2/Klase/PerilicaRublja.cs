@@ -13,6 +13,5 @@ namespace ClassLibrary.Klase
         public int Temp { get; set; }
 
         public Enumeracija.ProgramPranja OdabirPrograma { get; set; }
-        }
     }
 }
