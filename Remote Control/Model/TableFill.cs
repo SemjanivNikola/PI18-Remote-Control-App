@@ -190,7 +190,7 @@ namespace Remote_Control
                         break;
                     case "TV":
                         {
-                            sqlQuery = " INSERT INTO TV (vol, program, off_timer, sn, in_use, name, model ) VALUES (0, 0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO TV (vol, program, sn, in_use, name, model ) VALUES (0, 0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     case "Air Conditioner":
@@ -215,7 +215,7 @@ namespace Remote_Control
                         break;
                     case "Stove":
                         {
-                            sqlQuery = " INSERT INTO Stove (stoveTemp, in_use, sn, name, model, p1Temp, p2Temp, p3Temp, p4Temp, p5Temp) VALUES (0, 0, '" + sn + "', '" + name + "', '" + model + "', 0, 0, 0, 0, 0) ";
+                            sqlQuery = " INSERT INTO Stove (in_use, sn, name, model, p1Temp, p2Temp, p3Temp, p4Temp, p5Temp) VALUES (0, '" + sn + "', '" + name + "', '" + model + "', 0, 0, 0, 0, 0) ";
                         }
                         break;
                     case "Refrigerator":

@@ -300,7 +300,6 @@ namespace Remote_Control
 
         private void DisconnectBtn_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
             timerTick.Text = "";
             UpdateTable();
             Instance.Hide();

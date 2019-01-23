@@ -258,7 +258,6 @@ namespace Remote_Control
 
         private void DisconnectBtn_Click(object sender, EventArgs e)
         {
-            inUse.Stop();
             lblWashingTime.Text = "";
             lblStartTimer.Text = "";
             Instance.Hide();

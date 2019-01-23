@@ -248,7 +248,6 @@ namespace Remote_Control
 
         private void DisconnectBtn_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
             UpdateTable();
             Instance.Hide();
             MessageBox.Show("Device was properly disconnected.");

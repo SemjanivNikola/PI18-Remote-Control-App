@@ -83,6 +83,7 @@ namespace Remote_Control
             else
             {
                 DataAccess.delDev(serialNum, type);
+                MessageBox.Show("Device is deleted.");
             }
         }
 
