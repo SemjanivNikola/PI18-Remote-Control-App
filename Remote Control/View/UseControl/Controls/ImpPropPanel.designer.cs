@@ -178,6 +178,7 @@
             this.tbPass.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.tbPass.Location = new System.Drawing.Point(409, 318);
             this.tbPass.Name = "tbPass";
+            this.tbPass.ReadOnly = true;
             this.tbPass.Size = new System.Drawing.Size(149, 20);
             this.tbPass.TabIndex = 15;
             this.tbPass.Text = "Type Password";
@@ -218,6 +219,7 @@
             // cbPass
             // 
             this.cbPass.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbPass.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPass.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.cbPass.FormattingEnabled = true;
             this.cbPass.Items.AddRange(new object[] {
@@ -227,7 +229,6 @@
             this.cbPass.Name = "cbPass";
             this.cbPass.Size = new System.Drawing.Size(72, 21);
             this.cbPass.TabIndex = 14;
-            this.cbPass.Text = "YES";
             this.cbPass.SelectedIndexChanged += new System.EventHandler(this.cbPass_SelectedIndexChanged);
             // 
             // Rtb

@@ -68,7 +68,6 @@ namespace Remote_Control
 
             try
             {
-                conString.Open();
                 ds.Tables.Add(dt);
                 adp.Fill(dt);
                 conString.Close();
@@ -157,10 +156,10 @@ namespace Remote_Control
         private void DisWasher_Click(object sender, EventArgs e)
         {
             lastPic.BackColor = Color.Transparent;
-            DisWasher.BackColor = Color.LightSteelBlue;
-            devName = DisWasher.Name;
-            LoadTable(DisWasher);
-            lastPic = DisWasher;
+            Dishwasher.BackColor = Color.LightSteelBlue;
+            devName = Dishwasher.Name;
+            LoadTable(Dishwasher);
+            lastPic = Dishwasher;
         }
 
         private void Stove_Click(object sender, EventArgs e)
@@ -175,10 +174,10 @@ namespace Remote_Control
         private void Refrigerator_Click(object sender, EventArgs e)
         {
             lastPic.BackColor = Color.Transparent;
-            Refri.BackColor = Color.LightSteelBlue;
-            devName = Refri.Name;
-            LoadTable(Refri);
-            lastPic = Refri;
+            Refrigerator.BackColor = Color.LightSteelBlue;
+            devName = Refrigerator.Name;
+            LoadTable(Refrigerator);
+            lastPic = Refrigerator;
         }
 
         private void connTable_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -197,11 +196,6 @@ namespace Remote_Control
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnConn_Click(object sender, EventArgs e)
         {
             if (devName == null || serialNum == null)
@@ -212,30 +206,9 @@ namespace Remote_Control
             else
             {
                 LoadData();
-                SwitchPanel.ShowMe(devName);
-                MainForm.current();
+                PanelFunction.ShowMe(devName);
+                serialNum = null;
             }
         }
-
-        /*private void Btf2()
-        {
-            SwitchPanel.StrBuilder(devName);
-           
-            tempPanel._instance = StovePanel._instance;
-            if (!Instance.Controls.Contains(tempPanel.Instance))
-            {
-                Instance.Controls.Add(StovePanel.Instance);
-                StovePanel.Instance.Dock = DockStyle.Fill;
-                StovePanel.Instance.BringToFront();
-            }
-            else
-            {
-                StovePanel.Instance.BringToFront();
-                StovePanel.Instance.Show();
-            }
-            MainForm.Instance.listPanel.Add(MainForm.Instance.lastPnl);
-        }*/
-
-        
     }
 }

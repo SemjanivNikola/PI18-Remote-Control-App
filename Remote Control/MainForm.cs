@@ -28,6 +28,7 @@ namespace Remote_Control
                     return _instance;
                 }
             }
+            private set { }
         }
 
         //  Za back i forrward button
@@ -47,6 +48,13 @@ namespace Remote_Control
         private void ImportButton_Click(object sender, EventArgs e)
         {
             ProgressBarLoad();
+
+            if (!MainPanel.Controls.Contains(ImpPropPanel.Instance))
+            {
+                ImpPropPanel.Instance.SendToBack();
+                ImpPropPanel.Instance.Hide();
+            }
+
             if (!MainPanel.Controls.Contains(ImpDevPanel.Instance))
             {
                 MainPanel.Controls.Add(ImpDevPanel.Instance);
@@ -57,19 +65,25 @@ namespace Remote_Control
             {
                 ImpDevPanel.Instance.BringToFront();
             }
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(ImportButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(ImportButton);
             lastActive = ImportButton;
 
             lastPnl = ImpDevPanel.Instance;
             listPanel.Add(lastPnl);
             index++;
-
         }
 
         private void DelButton_Click(object sender, EventArgs e)
         {
             ProgressBarLoad();
+
+            if (!MainPanel.Controls.Contains(ListDevPanel.Instance))
+            {
+                ListDevPanel.Instance.SendToBack();
+                ListDevPanel.Instance.Hide();
+            }
+
             if (!MainPanel.Controls.Contains(DelDevPanel.Instance))
             {
                 MainPanel.Controls.Add(DelDevPanel.Instance);
@@ -80,14 +94,13 @@ namespace Remote_Control
             {
                 DelDevPanel.Instance.BringToFront();
             }
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(DelButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(DelButton);
             lastActive = DelButton;
 
             lastPnl = DelDevPanel.Instance;
             listPanel.Add(lastPnl);
             index++;
-            
         }
 
         private void ConnButton_Click(object sender, EventArgs e)
@@ -103,8 +116,8 @@ namespace Remote_Control
             {
                 ConnDevPanel.Instance.BringToFront();
             }
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(ConnButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(ConnButton);
             lastActive = ConnButton;
 
             lastPnl = ConnDevPanel.Instance;
@@ -125,8 +138,8 @@ namespace Remote_Control
             {
                 ListDevPanel.Instance.BringToFront();
             }
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(ListButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(ListButton);
             lastActive = ListButton;
 
             lastPnl = ListDevPanel.Instance;
@@ -140,25 +153,33 @@ namespace Remote_Control
             if (lastPnl == null)
                 return;
             else if (index > 0)
+            {
+                ProgressBarLoad();
                 listPanel[--index].BringToFront();
-
+            }
             if (listPanel[index] == ImpDevPanel.Instance)   //uzima trenutni index i provjerava koji je panel aktivan za promjenu buttona
             {                                               //trebat ce jos napravit za kontrole kad se povezu
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(ImportButton);
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ImportButton);
                 lastActive = ImportButton;
             }
-            else if(listPanel[index] == DelDevPanel.Instance)
+            else if (listPanel[index] == DelDevPanel.Instance)
             {
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(DelButton);
-                lastActive = DelButton;   
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(DelButton);
+                lastActive = DelButton;
             }
             else if (listPanel[index] == ConnDevPanel.Instance)
             {
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(ConnButton);
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ConnButton);
                 lastActive = ConnButton;
+            }
+            else if (listPanel[index] == ListDevPanel.Instance)
+            {
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ListButton);
+                lastActive = ListButton;
             }
         }
 
@@ -168,25 +189,33 @@ namespace Remote_Control
             if (lastPnl == null)
                 return;
             else if (index < listPanel.Count - 1)
+            {
+                ProgressBarLoad();
                 listPanel[++index].BringToFront();
-
+            }
             if (listPanel[index] == ImpDevPanel.Instance)
             {
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(ImportButton);
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ImportButton);
                 lastActive = ImportButton;
             }
             else if (listPanel[index] == DelDevPanel.Instance)
             {
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(DelButton);
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(DelButton);
                 lastActive = DelButton;
             }
             else if (listPanel[index] == ConnDevPanel.Instance)
             {
-                ActiveButton.InactiveB(lastActive);
-                ActiveButton.ActiveB(ConnButton);
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ConnButton);
                 lastActive = ConnButton;
+            }
+            else if (listPanel[index] == ListDevPanel.Instance)
+            {
+                ButtonControl.InactiveB(lastActive);
+                ButtonControl.ActiveB(ListButton);
+                lastActive = ListButton;
             }
         }
 
@@ -203,8 +232,8 @@ namespace Remote_Control
                 ImpDevPanel.Instance.BringToFront();
             }
             //  Promjena stanja buttona
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(ImportButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(ImportButton);
             lastActive = ImportButton;
             // Stavljanje u listu
             lastPnl = ImpDevPanel.Instance;
@@ -212,14 +241,6 @@ namespace Remote_Control
             index++;
         
             ImpDevPanel.QuickBtfPanel();   //funkcija koja poziva import panel s otkljucanim typeom
-        }
-
-        public static void current()
-        {
-            if(SwitchPanel.activePnl == true)
-                Instance.CurrDevTool.Image = Properties.Resources.Current;
-            else
-                Instance.CurrDevTool.Image = Properties.Resources.CurrentGray;
         }
 
         private void selectDeviceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -235,8 +256,8 @@ namespace Remote_Control
                 ImpDevPanel.Instance.BringToFront();
             }
             //  Promjena stanja buttona
-            ActiveButton.InactiveB(lastActive);
-            ActiveButton.ActiveB(ImportButton);
+            ButtonControl.InactiveB(lastActive);
+            ButtonControl.ActiveB(ImportButton);
             lastActive = ImportButton;
             // Stavljanje u listu
             lastPnl = ImpDevPanel.Instance;
@@ -263,12 +284,83 @@ namespace Remote_Control
             }
         }
 
-        private void CurrDevTool_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            if(SwitchPanel.activePnl == true)
+            Instance = this;
+            PanelFunction.loadFavourites();
+            DataAccess.ConnectionClose();
+            ToolStripFavItems();
+        }
+
+        //  Projerava i postavlja uredaj kao favorit ako vec nije
+        private void favouritesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (PanelFunction.activePnl == true)
             {
-                SwitchPanel.ShowMe(Device.Naziv);
+                bool check = false;
+                check = PanelFunction.searchFavourites(Device.serialNum);
+                if (check == true)
+                {
+                    PanelFunction.deleteFavourite(Device.Naziv, 
+                        Device.serialNum);
+                    ToolStripItem remove = new ToolStripMenuItem
+                    {
+                        Text = Device.Naziv
+                    };
+                    favouriteMenuItem.DropDownItems.Remove(remove);
+                    MessageBox.Show("Device is removed from Favourites.");
+                }
+                else
+                {
+                    PanelFunction.addPnlToList(Device.serialNum);
+                    ToolStripItem newItem = new ToolStripMenuItem
+                    {
+                        Text = Device.Naziv
+                    };
+                    favouriteMenuItem.DropDownItems.Add(newItem);
+                    MessageBox.Show("Device is added as Favourite.");
+                }
             }
+            else
+            {
+                MessageBox.Show("You are not connected at the moment.");
+                return;
+            }
+        }
+
+        private void ToolStripFavItems()
+        {
+            int i = 0;
+            foreach (var element in PanelFunction.devFavName)
+            {
+                ToolStripItem newItem = new ToolStripMenuItem
+                {
+                    Text = PanelFunction.devFavName[i]
+                };
+                favouriteMenuItem.DropDownItems.Add(newItem);
+                i++;
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void RefreshTool_Click(object sender, EventArgs e)
+        {
+            ListDevPanel.Instance.listTable.Refresh();
+            MessageBox.Show("List Panel Table has been refreshed.\nAll currently inserted devices are listed.");
+        }
+
+        private void applicationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Remote Control App\nVersion 1.0.0\nApplication for managing home devices. Making things easier :)");
+        }
+
+        private void developersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("We are small students from Pula, Croatia, but seeking for big things.\n\nTeam leader: Nikola Semjaniv\nRight hand: Sinoma Jurić\nMost valuable developer: Vladimir Parat\nAdministration manager: Marko Mraović\n");
         }
     }
 }

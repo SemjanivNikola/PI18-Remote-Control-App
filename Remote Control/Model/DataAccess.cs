@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using Finisar.SQLite;
+using System.Windows.Forms;
 //using System.Data.SQLite;
 
 namespace Remote_Control
@@ -48,34 +49,35 @@ namespace Remote_Control
             }
         }
 
+        //  Zatvaranje konekcije
         public static void ConnectionClose()
         {
             Connection.Close();
         }
 
-        /*public static DataView GetDataTableView(string sql)
-        {
-            DataSet ds = GetDataView(sql);
-            DataView dv = new DataView(ds.Tables[0]);
-
-            return dv;
-        }*/
-
+        //  Data Set
         public static DataSet GetDataSet(string sql)
         {
             SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
             SQLiteDataAdapter adp = new SQLiteDataAdapter(cmd);
 
             DataSet ds = new DataSet();
-            adp.Fill(ds);
-            Connection.Close();
-
+            try
+            {
+                adp.Fill(ds);
+                Connection.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong. Please try again!");
+            }
             cmd.Dispose();
             adp.Dispose();
 
             return ds;
         }
 
+        //  Data Table
         public static DataTable GetDataTable(string sql)
         {
             Console.WriteLine(sql);
@@ -86,28 +88,25 @@ namespace Remote_Control
             return null;
         }
 
-        /*public static DataTable GetDataView(string sql)
-        {
-            SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
-            SQLiteDataAdapter adp = new SQLiteDataAdapter(cmd);
-            DataTable dt = new DataTable();
-        
-            adp.Fill(dt);
-            Connection.Close();
-            return dt;
-        }*/
-
+        //  Izvrsavanje naredbe i otvaranje konekcije
         public static int ExecuteSQL(string sql)
         {
             SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
-            return cmd.ExecuteNonQuery();
+            try
+            {
+                return cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Something went wrong. Please try again.");
+            }
+            return 0;
         }
 
-        /*public static DataTable GetDataTableView(string sql)
+        //  Data Table View
+        public static DataTable GetDataTableView(string sql)
         {
             SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
-            cmd.CommandText = String.Format(sql);
-
             SQLiteDataAdapter adp = new SQLiteDataAdapter(cmd);
             DataTable dt = new DataTable();
             DataSet ds = new DataSet();
@@ -119,15 +118,15 @@ namespace Remote_Control
                 Connection.Close();
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
 
             if (ds.Tables.Count > 0)
                 return ds.Tables[0];
             return null;
-        }*/
+        }
 
         //  Izvlačenje serijskog broja uređaja iz baze
         public static string GetSN(string sql, int position)
@@ -146,9 +145,9 @@ namespace Remote_Control
                 }
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
 
             cmd.Dispose();
@@ -156,6 +155,54 @@ namespace Remote_Control
 
             return strSN;
         }
-    }
 
+        //  Brisanje iz baze
+        public static void delDev(string serialNum, string devType)
+        {
+            string sqlQuery = "DELETE FROM '"+ devType +"' WHERE sn = '"+ serialNum +"'";
+            ExecuteSQL(sqlQuery);
+            sqlQuery = "DELETE FROM device WHERE sn = '" + serialNum + "'";
+            ExecuteSQL(sqlQuery);
+        }
+
+        //  Citanje favorita iz baze
+        public static int loadFavourites(List<string> id, List<string> name)
+        {
+            int brojac = 0;
+            string sqlQuery = "SELECT sn, name FROM device WHERE favourites = 1";
+            SQLiteCommand cmd = new SQLiteCommand(sqlQuery, Connection);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                while (reader.Read())
+                {
+                    string serialNum = reader["sn"].ToString();
+                    string favName = (string)reader["name"];
+                    if (favName == null)
+                        break;
+                    id.Add(serialNum);
+                    name.Add(favName);
+                    brojac ++;
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            cmd.Dispose();
+            reader.Dispose();
+
+            return brojac;
+        }
+
+        //Brisanje favorita iz baze
+        public static void delFav(string serialNum)
+        {
+            string sqlQuery = "UPDATE device SET favourites = 0 WHERE sn = '" + serialNum + "'";
+            ExecuteSQL(sqlQuery);
+            ConnectionClose();
+
+        }
+    }
 }

@@ -7,20 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ClassLibrary.Klase.Enumeracija;
 using ClassLibrary;
 
 namespace Remote_Control
-{
-    public partial class WasMachinePanel : UserControl
+{ 
+    public partial class DishwasherPanel : UserControl
     {
-        public static WasMachinePanel _instance;
-        public static WasMachinePanel Instance
+        public static DishwasherPanel _instance;
+        public static DishwasherPanel Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new WasMachinePanel();
+                    _instance = new DishwasherPanel();
                     return _instance;
                 }
                 else
@@ -34,8 +35,7 @@ namespace Remote_Control
         //------------  privatni atributi  -------------//
 
         private string serialNum = null;
-        private int washingTime = 59;
-        private int function = 0;
+        private int washingTime = 0;
 
         //  Timer in_use
         int sec = 0;
@@ -45,51 +45,28 @@ namespace Remote_Control
         //  Countdown Off timer
         int Tsec = 60;
         int Dmin = 0;
-        int Tmin = 0;
+        int Tmin = 59;
         private bool inProgress = false;
         private bool StartinProgress = false;
 
         //------------  Kraj bloka  ------------//
         //-------------------------------------//
 
-        public WasMachinePanel()
+        public DishwasherPanel()
         {
             InitializeComponent();
-
-            //Temperatura
-            cbTemp.DisplayMember = "Description";
-            cbTemp.ValueMember = "Value";
-            cbTemp.DataSource = Enum.GetValues(typeof(ClassLibrary.Klase.Enumeracija.TemperaturaPranja))
-                .Cast<Enum>().Select(
-                    value => new
-                    {
-                        (Attribute.GetCustomAttribute(value.GetType().GetField(value.ToString()), typeof(DescriptionAttribute)) as DescriptionAttribute).Description,
-                        value
-                    }).OrderBy(item => item.value).ToList();
         }
-        public void WasMachinePanel_Load(object sender, EventArgs e)
+        public void DishwasherPanel_Load(object sender, EventArgs e)
         {
-            nameWM.Text = TableFill.name;
-            modelWM.Text = TableFill.model;
+            nameDW.Text = TableFill.name;
+            modelDW.Text = TableFill.model;
             DevConnected.Text = TableFill.inUse;
             serialNum = TableFill.sn;
 
             PanelFunction.activePnl = true;
-            Device.Naziv = nameWM.Text;
+            Device.Naziv = nameDW.Text;
         }
 
-        //------------------------------------------------------//
-        //------------  Update DB on disconnecting ------------//
-        void UpdateTable()
-        {
-            string sn = serialNum;
-            //string sqlQuery = "UPDATE WasMachine SET temp = '" + cbTemp.Text + "' WHERE sn = '" + Device.serialNum + "' ";
-            //DataAccess.ExecuteSQL(sqlQuery);
-            DataAccess.ConnectionClose();
-        }
-        //------------  Kraj bloka  ------------//
-        //-------------------------------------//
-        
         //-------------------------------------//
         //----------    Tajmeri     ----------//
 
@@ -100,6 +77,7 @@ namespace Remote_Control
             {
                 sec = 0;
                 min++;
+
             }
             if (min > 59)
             {
@@ -113,7 +91,7 @@ namespace Remote_Control
             if (StartinProgress == true)
             {
                 Tsec--;
-                lblStart.Text = Dmin + " : " + ((Tsec % 60) >= 10 ? (Tsec % 60).ToString() : "0" + (Tsec % 60));
+                lblStartTimer.Text = Dmin + " : " + ((Tsec % 60) >= 10 ? (Tsec % 60).ToString() : "0" + (Tsec % 60));
 
                 if (Tsec < 1)
                 {
@@ -132,7 +110,7 @@ namespace Remote_Control
         }
         private void washing_Tick(object sender, EventArgs e)
         {
-            if (inProgress == true)
+            if(inProgress == true)
             {
                 Tsec--;
                 lblWashingTime.Text = Tmin + " : " + ((Tsec % 60) >= 10 ? (Tsec % 60).ToString() : "0" + (Tsec % 60));
@@ -168,6 +146,8 @@ namespace Remote_Control
             {
                 delay.Stop();
                 washing.Stop();
+                lblWashingTime.Text = "";
+                lblStartTimer.Text = "";
                 OnOff.BackgroundImage = Properties.Resources.off;
                 Device.On = false;
             }
@@ -194,7 +174,7 @@ namespace Remote_Control
         {
             if (Device.CheckOnOff() == true)
             {
-                if (Dmin > 0)
+                if(Dmin > 0)
                 {
                     if (StartinProgress == false)
                     {
@@ -211,7 +191,7 @@ namespace Remote_Control
                 }
                 else if (StartinProgress == false)
                 {
-                    if (inProgress == false)
+                    if(inProgress == false)
                     {
                         inProgress = true;
                         Tmin = washingTime;
@@ -247,53 +227,29 @@ namespace Remote_Control
                 }
             }
         }
-        private void rbWhite_CheckedChanged(object sender, EventArgs e)
+        private void rbMetal_CheckedChanged(object sender, EventArgs e)
         {
-            washingTime = 90;
-            washingTime += function - 1;   
+            if (Device.CheckOnOff() == true)
+            {
+                pbIspisStupnjeva.Image = Properties.Resources.eigdegree;
+                washingTime = 30 -1;
+            }
         }
-
-        private void rbWool_CheckedChanged(object sender, EventArgs e)
+        private void rbKeramika_CheckedChanged(object sender, EventArgs e)
         {
-            washingTime = 120;
-            washingTime += function - 1;
+            if (Device.CheckOnOff() == true)
+            {
+                pbIspisStupnjeva.Image = Properties.Resources.sevdegree;
+                washingTime = 45 -1;
+            }
         }
-
-        private void rbSnickers_CheckedChanged(object sender, EventArgs e)
+        private void rbPlastika_CheckedChanged(object sender, EventArgs e)
         {
-            washingTime = 45;
-            washingTime += function - 1;
-        }
-
-        private void rbBlack_CheckedChanged(object sender, EventArgs e)
-        {
-            washingTime = 60;
-            washingTime += function - 1;
-        }
-
-        private void rbJeans_CheckedChanged(object sender, EventArgs e)
-        {
-            washingTime = 120;
-            washingTime += function - 1;
-        }
-        private void rbCentrifuga_CheckedChanged(object sender, EventArgs e)
-        {
-            function = 15;
-            washingTime += function - 1;
-        }
-        private void rbWaterDown_CheckedChanged(object sender, EventArgs e)
-        {
-            function = 5;
-            washingTime += function - 1;
-        }
-        private void rbRisen_CheckedChanged(object sender, EventArgs e)
-        {
-            function = 20;
-            washingTime += function - 1;
-        }
-        private void cbTemp_TextChanged(object sender, EventArgs e)
-        {
-            lblTemp.Text = cbTemp.Text;
+            if (Device.CheckOnOff() == true)
+            {
+                pbIspisStupnjeva.Image = Properties.Resources.sixdegree;
+                washingTime = 60 -1;
+            }
         }
 
         //-------------------------     Kraj bloka      -------------------------//
@@ -304,8 +260,7 @@ namespace Remote_Control
         {
             inUse.Stop();
             lblWashingTime.Text = "";
-            lblStart.Text = "";
-            UpdateTable();
+            lblStartTimer.Text = "";
             Instance.Hide();
             MessageBox.Show("Device was properly disconnected.");
             PanelFunction.activePnl = false;
@@ -313,3 +268,5 @@ namespace Remote_Control
         }
     }
 }
+    
+

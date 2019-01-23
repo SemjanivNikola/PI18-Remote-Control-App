@@ -48,9 +48,7 @@ namespace Remote_Control
         public static string inUse = null;
         public static string name = null;
         public static string model = null;
-        public static string off_timer = null;
         public static string temp = null;
-        public static string delay_start = null;
         public static string sn = null;
 
 
@@ -76,77 +74,95 @@ namespace Remote_Control
                             }
                         }
                         break;
-                    /*case "TV":
+                    case "TV":
                         {
-                            vol = (string)reader["vol"];
-                            program = (string)reader["program"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                vol = (string)reader["vol"];
+                                program = (string)reader["program"];
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
-                        break;*/
+                        break;
                     case "AirCon":
                         {
-                            temp = (string)reader["temp"];
-                            delay_start = (string)reader["delay_start"];
-                            fan_speed = (string)reader["fan_speed"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                temp = (string)reader["temp"];
+                                fan_speed = (string)reader["fan_speed"];
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
                         break;
                     case "WtrHtr":
                         {
-                            temp = (string)reader["temp"];
-                            co2 = (string)reader["co2"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                temp = (string)reader["temp"];
+                                co2 = (string)reader["co2"];
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
+
                         }
                         break;
                     case "WasMachine":
                         {
-                            temp = (string)reader["temp"];
-                            delay_start = (string)reader["delay_start"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                temp = (string)reader["temp"];
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
                         break;
-                    case "DisWasher":
+                    case "Dishwasher":
                         {
-                            delay_start = (string)reader["delay_start"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
                         break;
                     case "Stove":
                         {
-                            stoveTemp = (string)reader["stoveTemp"];
-                            p1Temp = (string)reader["p1Temp"];
-                            p2Temp = (string)reader["p2Temp"];
-                            p3Temp = (string)reader["p3Temp"];
-                            p4Temp = (string)reader["p4Temp"];
-                            p5Temp = (string)reader["p5Temp"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                p1Temp = reader["p1Temp"].ToString();
+                                p2Temp = reader["p2Temp"].ToString();
+                                p3Temp = reader["p3Temp"].ToString();
+                                p4Temp = reader["p4Temp"].ToString();
+                                p5Temp = reader["p5Temp"].ToString();
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
                         break;
-                    case "Refri":
+                    case "Refrigerator":
                         {
-                            temp = (string)reader["temp"];
-                            sn = (string)reader["sn"];
-                            inUse = (string)reader["in_use"];
-                            name = (string)reader["name"];
-                            model = (string)reader["model"];
+                            while (reader.Read())
+                            {
+                                temp = (string)reader["temp"];
+                                sn = reader["sn"].ToString();
+                                inUse = (string)reader["in_use"];
+                                name = (string)reader["name"];
+                                model = (string)reader["model"];
+                            }
                         }
                         break;
                     default: break;
@@ -160,6 +176,7 @@ namespace Remote_Control
             }
         }
 
+        //  Spremanje novog uredaja u bazu u njegovu tablicu
         public static void Trigger(string type, string name, string sn, string model)
         {
             try
@@ -173,12 +190,12 @@ namespace Remote_Control
                         break;
                     case "TV":
                         {
-                            sqlQuery = " INSERT INTO TV (vol, program, off_timer, sn, in_use, name, model ) VALUES (0, 0, 0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO TV (vol, program, off_timer, sn, in_use, name, model ) VALUES (0, 0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     case "Air Conditioner":
                         {
-                            sqlQuery = " INSERT INTO AirCon (delay_start, off_timer, temp, fan_speed, sn, in_use, name, model ) VALUES (0, 0, 0, 0, '"+ sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO AirCon (temp, fan_speed, sn, in_use, name, model ) VALUES (0, 0, '"+ sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     case "Water Heater":
@@ -188,22 +205,22 @@ namespace Remote_Control
                         break;
                     case "Washing Machine":
                         {
-                            sqlQuery = " INSERT INTO WasMachine (delay_start, temp, sn, in_use, name, model ) VALUES (0, 0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO WasMachine (temp, sn, in_use, name, model ) VALUES (0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     case "Dishwasher":
                         {
-                            sqlQuery = " INSERT INTO DisWasher (delay_start, sn, in_use, name, model ) VALUES (0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO Dishwasher (sn, in_use, name, model ) VALUES ('" + sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     case "Stove":
                         {
-                            sqlQuery = " INSERT INTO Stove (NumOfPlates, stoveTemp, PlateNum, in_use, sn, name, model, p1Temp, p2Temp, p3Temp, p4Temp, p5Temp) VALUES (0, 0, 0, 0, '" + sn + "', '" + name + "', '" + model + "', 0, 0, 0, 0, 0) ";
+                            sqlQuery = " INSERT INTO Stove (stoveTemp, in_use, sn, name, model, p1Temp, p2Temp, p3Temp, p4Temp, p5Temp) VALUES (0, 0, '" + sn + "', '" + name + "', '" + model + "', 0, 0, 0, 0, 0) ";
                         }
                         break;
-                    case "Refrigirator":
+                    case "Refrigerator":
                         {
-                            sqlQuery = " INSERT INTO Refri (temp, sn, in_use, name, model ) VALUES (0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
+                            sqlQuery = " INSERT INTO Refrigerator (temp, sn, in_use, name, model ) VALUES (0, '" + sn + "', 0, '" + name + "', '" + model + "') ";
                         }
                         break;
                     default: break;

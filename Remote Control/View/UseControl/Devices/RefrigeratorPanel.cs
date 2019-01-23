@@ -11,16 +11,16 @@ using ClassLibrary;
 
 namespace Remote_Control
 {
-    public partial class WtrHtrPanel : UserControl
+    public partial class RefrigeratorPanel : UserControl
     {
-        public static WtrHtrPanel _instance;
-        public static WtrHtrPanel Instance
+        public static RefrigeratorPanel _instance;
+        public static RefrigeratorPanel Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new WtrHtrPanel();
+                    _instance = new RefrigeratorPanel();
                     return _instance;
                 }
                 else
@@ -42,18 +42,20 @@ namespace Remote_Control
         //------------  Kraj bloka  ------------//
         //-------------------------------------//
 
-        public WtrHtrPanel()
+        public RefrigeratorPanel()
         {
             InitializeComponent();
         }
-        public void WaterHeaterPanel_Load(object sender, EventArgs e)
+        public void RefriPanel_Load(object sender, EventArgs e)
         {
-            tbTemp.Text = TableFill.temp;
-            tbCo2.Text = TableFill.co2;
-            nameWH.Text = TableFill.name;
-            modelWH.Text = TableFill.model;
+            TempValue.Text = TableFill.temp;
+            nameRefri.Text = TableFill.name;
+            modelRefri.Text = TableFill.model;
             DevConnected.Text = TableFill.inUse;
-            tbCo2.Text = Bojler.OcitavanjePlina().ToString();
+            serialNum = TableFill.sn;
+
+            PanelFunction.activePnl = true;
+            Device.Naziv = nameRefri.Text;
         }
 
         //------------------------------------------------------//
@@ -61,7 +63,7 @@ namespace Remote_Control
         void UpdateTable()
         {
             string sn = serialNum;
-            string sqlQuery = "UPDATE WtrHtr SET temp = '" + tbTemp.Text + "', co2 = '" + tbCo2.Text + "' WHERE sn = '" + Device.serialNum + "' ";
+            string sqlQuery = "UPDATE Refrigerator SET temp = '" + TempValue.Text + "' WHERE sn = '" + Device.serialNum + "' ";
             DataAccess.ExecuteSQL(sqlQuery);
             DataAccess.ConnectionClose();
         }
@@ -69,7 +71,7 @@ namespace Remote_Control
         //-------------------------------------//
 
         //-------------------------------------//
-        //----------    Tajmer     ----------//
+        //----------    Tajmeri     ----------//
         private void timer1_Tick(object sender, EventArgs e)
         {
             sec++;
@@ -103,17 +105,26 @@ namespace Remote_Control
             }
         }
 
+        //------------------------------------------//
+        //----------------  Event   ---------------//
+        private void Rtb_TextChanged(object sender, EventArgs e)
+        {
+            Rtb.SelectionStart = Rtb.Text.Length;
+            Rtb.ScrollToCaret();
+        }
+
         //----------------------------------------------------//
         //---------------    Buttons     --------------------//
+
         private void Minus_Click(object sender, EventArgs e)
         {
             if (Device.CheckOnOff() == true)
             {
-                int Temperature = Int32.Parse(tbTemp.Text);
-                if (Temperature > 0)
+                int Temperature = Int32.Parse(TempValue.Text);
+                if (Temperature > -10)
                 {
                     Temperature--;
-                    tbTemp.Text = Convert.ToString(Temperature);
+                    TempValue.Text = Convert.ToString(Temperature);
                 }
             }
         }
@@ -121,15 +132,35 @@ namespace Remote_Control
         {
             if (Device.CheckOnOff() == true)
             {
-                int Temperature = Int32.Parse(tbTemp.Text);
+                int Temperature = Int32.Parse(TempValue.Text);
                 if (Temperature < 10)
                 {
                     Temperature++;
-                    tbTemp.Text = Convert.ToString(Temperature);
+                    TempValue.Text = Convert.ToString(Temperature);
                 }
             }
         }
-        
+        private void DispenseIce_Click(object sender, EventArgs e)
+        {
+            if (Device.CheckOnOff() == true)
+            {
+                if (CubedIce.Checked || CrushedIce.Checked)
+                {
+                    Rtb.Text = "Ice dispensed";
+                    CubedIce.Checked = false;
+                    CrushedIce.Checked = false;
+                }
+            }
+        }
+        private void DispenceWater_Click(object sender, EventArgs e)
+        {
+            if(Device.CheckOnOff() == true)
+                Rtb.Text = "Water is dispenced.";
+        }
+
+        //-------------------------     Kraj bloka      -------------------------//
+        //----------------------------------------------------------------------//
+
         private void DisconnectBtn_Click(object sender, EventArgs e)
         {
             timer1.Stop();

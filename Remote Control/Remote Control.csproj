@@ -54,11 +54,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\UseControl\Devices\AirCondPanel.cs">
+    <Compile Include="View\UseControl\Controls\DelDevPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\UseControl\Devices\AirCondPanel.designer.cs">
-      <DependentUpon>AirCondPanel.cs</DependentUpon>
+    <Compile Include="View\UseControl\Controls\DelDevPanel.designer.cs">
+      <DependentUpon>DelDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\TVPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\TVPanel.Designer.cs">
+      <DependentUpon>TVPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ConnDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\ConnDevPanel.designer.cs">
+      <DependentUpon>ConnDevPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\AirConPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\AirConPanel.designer.cs">
+      <DependentUpon>AirConPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UseControl\Controls\ListDevPanel.cs">
       <SubType>UserControl</SubType>
@@ -66,11 +89,11 @@
     <Compile Include="View\UseControl\Controls\ListDevPanel.Designer.cs">
       <DependentUpon>ListDevPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UseControl\Devices\DisWashPanel.cs">
+    <Compile Include="View\UseControl\Devices\DishwashPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\UseControl\Devices\DisWashPanel.designer.cs">
-      <DependentUpon>DisWashPanel.cs</DependentUpon>
+    <Compile Include="View\UseControl\Devices\DishwashPanel.designer.cs">
+      <DependentUpon>DishwashPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -78,24 +101,12 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presenter\SwitchPanel.cs" />
+    <Compile Include="Presenter\PanelFunction.cs" />
     <Compile Include="Model\TableFill.cs" />
-    <Compile Include="View\UseControl\Controls\ConnDevPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UseControl\Controls\ConnDevPanel.Designer.cs">
-      <DependentUpon>ConnDevPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Presenter\ActiveButton.cs">
+    <Compile Include="Presenter\ButtonControl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\DataAccess.cs" />
-    <Compile Include="View\UseControl\Controls\DelDevPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UseControl\Controls\DelDevPanel.Designer.cs">
-      <DependentUpon>DelDevPanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\UseControl\Controls\ImpDevPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -116,11 +127,11 @@
     <Compile Include="View\UseControl\Devices\LightsPanel.Designer.cs">
       <DependentUpon>LightsPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UseControl\Devices\RefriPanel.cs">
+    <Compile Include="View\UseControl\Devices\RefrigeratorPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\UseControl\Devices\RefriPanel.Designer.cs">
-      <DependentUpon>RefriPanel.cs</DependentUpon>
+    <Compile Include="View\UseControl\Devices\RefrigeratorPanel.Designer.cs">
+      <DependentUpon>RefrigeratorPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UseControl\Devices\StovePanel.cs">
       <SubType>UserControl</SubType>
@@ -128,35 +139,38 @@
     <Compile Include="View\UseControl\Devices\StovePanel.Designer.cs">
       <DependentUpon>StovePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\UseControl\Devices\WasMachinePanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\UseControl\Devices\WasMachinePanel.designer.cs">
-      <DependentUpon>WasMachinePanel.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\UseControl\Devices\WtrHtrPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\UseControl\Devices\WtrHtrPanel.designer.cs">
       <DependentUpon>WtrHtrPanel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\UseControl\Devices\AirCondPanel.resx">
-      <DependentUpon>AirCondPanel.cs</DependentUpon>
+    <Compile Include="View\UseControl\Devices\WasMachinePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Devices\WasMachinePanel.designer.cs">
+      <DependentUpon>WasMachinePanel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\UseControl\Controls\DelDevPanel.resx">
+      <DependentUpon>DelDevPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UseControl\Controls\ListDevPanel.resx">
-      <DependentUpon>ListDevPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\UseControl\Devices\DisWashPanel.resx">
-      <DependentUpon>DisWashPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\UseControl\Devices\TVPanel.resx">
+      <DependentUpon>TVPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UseControl\Controls\ConnDevPanel.resx">
       <DependentUpon>ConnDevPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UseControl\Controls\DelDevPanel.resx">
-      <DependentUpon>DelDevPanel.cs</DependentUpon>
+    <EmbeddedResource Include="View\UseControl\Devices\AirConPanel.resx">
+      <DependentUpon>AirConPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Controls\ListDevPanel.resx">
+      <DependentUpon>ListDevPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\DishwashPanel.resx">
+      <DependentUpon>DishwashPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UseControl\Controls\ImpDevPanel.resx">
       <DependentUpon>ImpDevPanel.cs</DependentUpon>
@@ -166,28 +180,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="View\UseControl\Devices\LightsPanel.resx">
       <DependentUpon>LightsPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UseControl\Devices\RefriPanel.resx">
-      <DependentUpon>RefriPanel.cs</DependentUpon>
+    <EmbeddedResource Include="View\UseControl\Devices\RefrigeratorPanel.resx">
+      <DependentUpon>RefrigeratorPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\UseControl\Devices\StovePanel.resx">
       <DependentUpon>StovePanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\UseControl\Devices\WasMachinePanel.resx">
-      <DependentUpon>WasMachinePanel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\UseControl\Devices\WtrHtrPanel.resx">
       <DependentUpon>WtrHtrPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\UseControl\Devices\WasMachinePanel.resx">
+      <DependentUpon>WasMachinePanel.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -268,11 +277,26 @@
     <None Include="Icons\rightGray.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Icons\Buttons\cancel.jpg" />
+    <Content Include="Icons\Buttons\conn.jpg" />
+    <Content Include="Icons\Buttons\dis.jpg" />
+    <Content Include="Icons\Buttons\disconn.jpg" />
+    <Content Include="Icons\Buttons\off.jpg" />
+    <Content Include="Icons\Buttons\on.jpg" />
+    <Content Include="Icons\Buttons\pause.jpg" />
+    <Content Include="Icons\Buttons\resume.jpg" />
+    <Content Include="Icons\Buttons\save.png" />
+    <Content Include="Icons\Buttons\set1.jpg" />
+    <Content Include="Icons\Buttons\start.jpg" />
+    <Content Include="Icons\Buttons\stop.jpg" />
     <Content Include="Icons\Dishwasher Resources\cutlery.jpg" />
     <Content Include="Icons\Dishwasher Resources\eigdegree.JPG" />
     <Content Include="Icons\Dishwasher Resources\sevdegree.JPG" />
     <Content Include="Icons\Dishwasher Resources\sixdegree.JPG" />
+    <None Include="Icons\volume.png" />
+    <None Include="Icons\muted.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.109.2\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

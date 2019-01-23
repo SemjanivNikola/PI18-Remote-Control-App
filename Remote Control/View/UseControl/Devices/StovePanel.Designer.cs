@@ -28,19 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StovePanel));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.timerTick = new System.Windows.Forms.Label();
+            this.lblTimer = new System.Windows.Forms.Label();
             this.modelStove = new System.Windows.Forms.Label();
             this.DevConnected = new System.Windows.Forms.Label();
             this.Model = new System.Windows.Forms.Label();
             this.DeviceConnected = new System.Windows.Forms.Label();
             this.nameStove = new System.Windows.Forms.Label();
             this.StovePictureBox = new System.Windows.Forms.PictureBox();
-            this.LabelOnOff = new System.Windows.Forms.Label();
-            this.OnOff = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.SetStove = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.SetTimer = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.startStopbtn = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.line2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.setTime = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.OnOff = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.DisconnectBtn = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.Plate1 = new System.Windows.Forms.Label();
             this.Plate2 = new System.Windows.Forms.Label();
             this.Plate3 = new System.Windows.Forms.Label();
@@ -64,11 +68,11 @@
             this.TimerLabel = new System.Windows.Forms.Label();
             this.cbTimer = new System.Windows.Forms.ComboBox();
             this.Stove = new System.Windows.Forms.Label();
-            this.cbStove = new System.Windows.Forms.ComboBox();
-            this.SetTimerLabel = new System.Windows.Forms.Label();
-            this.SetStoveLabel = new System.Windows.Forms.Label();
-            this.textBox = new System.Windows.Forms.RichTextBox();
-            this.DisconnectBtn = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.cbTempStove = new System.Windows.Forms.ComboBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.lblTm = new System.Windows.Forms.Label();
+            this.lblTemp = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StovePictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Plus1)).BeginInit();
@@ -86,6 +90,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.lblTemp);
+            this.panel1.Controls.Add(this.lblTm);
+            this.panel1.Controls.Add(this.timerTick);
+            this.panel1.Controls.Add(this.lblTimer);
             this.panel1.Controls.Add(this.modelStove);
             this.panel1.Controls.Add(this.DevConnected);
             this.panel1.Controls.Add(this.Model);
@@ -96,6 +104,27 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(233, 426);
             this.panel1.TabIndex = 3;
+            // 
+            // timerTick
+            // 
+            this.timerTick.AutoSize = true;
+            this.timerTick.BackColor = System.Drawing.Color.Transparent;
+            this.timerTick.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timerTick.Location = new System.Drawing.Point(116, 336);
+            this.timerTick.Name = "timerTick";
+            this.timerTick.Size = new System.Drawing.Size(0, 15);
+            this.timerTick.TabIndex = 114;
+            // 
+            // lblTimer
+            // 
+            this.lblTimer.AutoSize = true;
+            this.lblTimer.BackColor = System.Drawing.Color.Transparent;
+            this.lblTimer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimer.Location = new System.Drawing.Point(21, 336);
+            this.lblTimer.Name = "lblTimer";
+            this.lblTimer.Size = new System.Drawing.Size(61, 15);
+            this.lblTimer.TabIndex = 113;
+            this.lblTimer.Text = "Timer in : ";
             // 
             // modelStove
             // 
@@ -113,9 +142,8 @@
             this.DevConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.DevConnected.Location = new System.Drawing.Point(152, 261);
             this.DevConnected.Name = "DevConnected";
-            this.DevConnected.Size = new System.Drawing.Size(12, 16);
+            this.DevConnected.Size = new System.Drawing.Size(0, 16);
             this.DevConnected.TabIndex = 4;
-            this.DevConnected.Text = "/";
             // 
             // Model
             // 
@@ -141,7 +169,7 @@
             // 
             this.nameStove.AutoSize = true;
             this.nameStove.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.nameStove.Location = new System.Drawing.Point(100, 224);
+            this.nameStove.Location = new System.Drawing.Point(79, 221);
             this.nameStove.Name = "nameStove";
             this.nameStove.Size = new System.Drawing.Size(12, 16);
             this.nameStove.TabIndex = 1;
@@ -157,66 +185,80 @@
             this.StovePictureBox.TabIndex = 0;
             this.StovePictureBox.TabStop = false;
             // 
-            // LabelOnOff
-            // 
-            this.LabelOnOff.AutoSize = true;
-            this.LabelOnOff.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.LabelOnOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LabelOnOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelOnOff.ForeColor = System.Drawing.Color.White;
-            this.LabelOnOff.Location = new System.Drawing.Point(36, 37);
-            this.LabelOnOff.Name = "LabelOnOff";
-            this.LabelOnOff.Size = new System.Drawing.Size(30, 16);
-            this.LabelOnOff.TabIndex = 10;
-            this.LabelOnOff.Text = "ON";
-            this.LabelOnOff.Click += new System.EventHandler(this.LabelOnOff_Click);
-            // 
-            // OnOff
-            // 
-            this.OnOff.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.OnOff.CornerRadius = 5;
-            this.OnOff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.OnOff.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.OnOff.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.OnOff.Location = new System.Drawing.Point(25, 36);
-            this.OnOff.Name = "OnOff";
-            this.OnOff.Size = new System.Drawing.Size(51, 17);
-            // 
             // shapeContainer1
             // 
             this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
             this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.DisconnectBtn,
-            this.SetStove,
-            this.SetTimer,
-            this.OnOff});
+            this.startStopbtn,
+            this.line2,
+            this.setTime,
+            this.OnOff,
+            this.DisconnectBtn});
             this.shapeContainer1.Size = new System.Drawing.Size(736, 426);
             this.shapeContainer1.TabIndex = 11;
             this.shapeContainer1.TabStop = false;
             // 
-            // SetStove
+            // startStopbtn
             // 
-            this.SetStove.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetStove.CornerRadius = 5;
-            this.SetStove.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SetStove.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetStove.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.SetStove.Location = new System.Drawing.Point(340, 235);
-            this.SetStove.Name = "SetStove";
-            this.SetStove.Size = new System.Drawing.Size(51, 17);
+            this.startStopbtn.BackgroundImage = global::Remote_Control.Properties.Resources.start;
+            this.startStopbtn.BorderColor = System.Drawing.Color.Gray;
+            this.startStopbtn.CornerRadius = 5;
+            this.startStopbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.startStopbtn.FillColor = System.Drawing.Color.Transparent;
+            this.startStopbtn.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.startStopbtn.Location = new System.Drawing.Point(326, 128);
+            this.startStopbtn.Name = "startStopbtn";
+            this.startStopbtn.Size = new System.Drawing.Size(75, 22);
+            this.startStopbtn.Click += new System.EventHandler(this.startStopbtn_Click);
             // 
-            // SetTimer
+            // line2
             // 
-            this.SetTimer.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetTimer.CornerRadius = 5;
-            this.SetTimer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SetTimer.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetTimer.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.SetTimer.Location = new System.Drawing.Point(340, 140);
-            this.SetTimer.Name = "SetTimer";
-            this.SetTimer.Size = new System.Drawing.Size(51, 17);
+            this.line2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.line2.Name = "line2";
+            this.line2.X1 = 9;
+            this.line2.X2 = 495;
+            this.line2.Y1 = 350;
+            this.line2.Y2 = 350;
+            // 
+            // setTime
+            // 
+            this.setTime.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("setTime.BackgroundImage")));
+            this.setTime.BorderColor = System.Drawing.Color.White;
+            this.setTime.CornerRadius = 5;
+            this.setTime.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.setTime.FillColor = System.Drawing.Color.Transparent;
+            this.setTime.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.setTime.Location = new System.Drawing.Point(332, 218);
+            this.setTime.Name = "setTime";
+            this.setTime.Size = new System.Drawing.Size(67, 22);
+            // 
+            // OnOff
+            // 
+            this.OnOff.BackgroundImage = global::Remote_Control.Properties.Resources.off;
+            this.OnOff.BorderColor = System.Drawing.Color.Gray;
+            this.OnOff.CornerRadius = 5;
+            this.OnOff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OnOff.FillColor = System.Drawing.Color.Transparent;
+            this.OnOff.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.OnOff.Location = new System.Drawing.Point(21, 26);
+            this.OnOff.Name = "OnOff";
+            this.OnOff.Size = new System.Drawing.Size(61, 22);
+            this.OnOff.Click += new System.EventHandler(this.OnOff_Click);
+            // 
+            // DisconnectBtn
+            // 
+            this.DisconnectBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DisconnectBtn.BackgroundImage")));
+            this.DisconnectBtn.BorderColor = System.Drawing.Color.Gray;
+            this.DisconnectBtn.CornerRadius = 5;
+            this.DisconnectBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DisconnectBtn.FillColor = System.Drawing.Color.Transparent;
+            this.DisconnectBtn.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.DisconnectBtn.Location = new System.Drawing.Point(164, 374);
+            this.DisconnectBtn.Name = "DisconnectBtn";
+            this.DisconnectBtn.Size = new System.Drawing.Size(153, 28);
+            this.DisconnectBtn.Click += new System.EventHandler(this.DisconnectBtn_Click);
             // 
             // Plate1
             // 
@@ -294,6 +336,7 @@
             // 
             this.PlateValue1.Location = new System.Drawing.Point(136, 97);
             this.PlateValue1.Name = "PlateValue1";
+            this.PlateValue1.ReadOnly = true;
             this.PlateValue1.Size = new System.Drawing.Size(25, 20);
             this.PlateValue1.TabIndex = 21;
             this.PlateValue1.Text = "0";
@@ -325,6 +368,7 @@
             // 
             this.PlateValue2.Location = new System.Drawing.Point(136, 137);
             this.PlateValue2.Name = "PlateValue2";
+            this.PlateValue2.ReadOnly = true;
             this.PlateValue2.Size = new System.Drawing.Size(25, 20);
             this.PlateValue2.TabIndex = 24;
             this.PlateValue2.Text = "0";
@@ -356,6 +400,7 @@
             // 
             this.PlateValue3.Location = new System.Drawing.Point(136, 177);
             this.PlateValue3.Name = "PlateValue3";
+            this.PlateValue3.ReadOnly = true;
             this.PlateValue3.Size = new System.Drawing.Size(25, 20);
             this.PlateValue3.TabIndex = 27;
             this.PlateValue3.Text = "0";
@@ -387,6 +432,7 @@
             // 
             this.PlateValue4.Location = new System.Drawing.Point(136, 217);
             this.PlateValue4.Name = "PlateValue4";
+            this.PlateValue4.ReadOnly = true;
             this.PlateValue4.Size = new System.Drawing.Size(25, 20);
             this.PlateValue4.TabIndex = 30;
             this.PlateValue4.Text = "0";
@@ -418,6 +464,7 @@
             // 
             this.PlateValue5.Location = new System.Drawing.Point(136, 258);
             this.PlateValue5.Name = "PlateValue5";
+            this.PlateValue5.ReadOnly = true;
             this.PlateValue5.Size = new System.Drawing.Size(25, 20);
             this.PlateValue5.TabIndex = 33;
             this.PlateValue5.Text = "0";
@@ -435,12 +482,13 @@
             // 
             // cbTimer
             // 
+            this.cbTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTimer.FormattingEnabled = true;
             this.cbTimer.Location = new System.Drawing.Point(306, 97);
             this.cbTimer.Name = "cbTimer";
             this.cbTimer.Size = new System.Drawing.Size(121, 21);
             this.cbTimer.TabIndex = 37;
-            this.cbTimer.SelectedIndexChanged += new System.EventHandler(this.TimerComboBox_SelectedIndexChanged);
+            this.cbTimer.TextChanged += new System.EventHandler(this.cbTimer_TextChanged);
             // 
             // Stove
             // 
@@ -452,70 +500,55 @@
             this.Stove.TabIndex = 38;
             this.Stove.Text = "Stove :";
             // 
-            // cbStove
+            // cbTempStove
             // 
-            this.cbStove.FormattingEnabled = true;
-            this.cbStove.Location = new System.Drawing.Point(306, 188);
-            this.cbStove.Name = "cbStove";
-            this.cbStove.Size = new System.Drawing.Size(121, 21);
-            this.cbStove.TabIndex = 39;
+            this.cbTempStove.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTempStove.FormattingEnabled = true;
+            this.cbTempStove.Location = new System.Drawing.Point(306, 188);
+            this.cbTempStove.Name = "cbTempStove";
+            this.cbTempStove.Size = new System.Drawing.Size(121, 21);
+            this.cbTempStove.TabIndex = 39;
+            this.cbTempStove.TextChanged += new System.EventHandler(this.cbTempStove_TextChanged);
             // 
-            // SetTimerLabel
+            // timer1
             // 
-            this.SetTimerLabel.AutoSize = true;
-            this.SetTimerLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetTimerLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SetTimerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetTimerLabel.ForeColor = System.Drawing.Color.White;
-            this.SetTimerLabel.Location = new System.Drawing.Point(347, 141);
-            this.SetTimerLabel.Name = "SetTimerLabel";
-            this.SetTimerLabel.Size = new System.Drawing.Size(38, 16);
-            this.SetTimerLabel.TabIndex = 40;
-            this.SetTimerLabel.Text = "SET";
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // SetStoveLabel
+            // timer2
             // 
-            this.SetStoveLabel.AutoSize = true;
-            this.SetStoveLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.SetStoveLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SetStoveLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SetStoveLabel.ForeColor = System.Drawing.Color.White;
-            this.SetStoveLabel.Location = new System.Drawing.Point(347, 236);
-            this.SetStoveLabel.Name = "SetStoveLabel";
-            this.SetStoveLabel.Size = new System.Drawing.Size(38, 16);
-            this.SetStoveLabel.TabIndex = 41;
-            this.SetStoveLabel.Text = "SET";
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // textBox
+            // lblTm
             // 
-            this.textBox.Location = new System.Drawing.Point(0, 365);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(503, 61);
-            this.textBox.TabIndex = 42;
-            this.textBox.Text = " . . . ";
+            this.lblTm.AutoSize = true;
+            this.lblTm.BackColor = System.Drawing.Color.Transparent;
+            this.lblTm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTm.Location = new System.Drawing.Point(18, 362);
+            this.lblTm.Name = "lblTm";
+            this.lblTm.Size = new System.Drawing.Size(87, 15);
+            this.lblTm.TabIndex = 115;
+            this.lblTm.Text = "Temperature : ";
             // 
-            // DisconnectBtn
+            // lblTemp
             // 
-            this.DisconnectBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DisconnectBtn.BackgroundImage")));
-            this.DisconnectBtn.BorderColor = System.Drawing.Color.Red;
-            this.DisconnectBtn.CornerRadius = 5;
-            this.DisconnectBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DisconnectBtn.FillColor = System.Drawing.Color.Red;
-            this.DisconnectBtn.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.DisconnectBtn.Location = new System.Drawing.Point(199, 316);
-            this.DisconnectBtn.Name = "DisconnectBtn";
-            this.DisconnectBtn.Size = new System.Drawing.Size(153, 28);
-            this.DisconnectBtn.Click += new System.EventHandler(this.DisconnectBtn_Click);
+            this.lblTemp.AutoSize = true;
+            this.lblTemp.BackColor = System.Drawing.Color.Transparent;
+            this.lblTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTemp.Location = new System.Drawing.Point(111, 362);
+            this.lblTemp.Name = "lblTemp";
+            this.lblTemp.Size = new System.Drawing.Size(0, 15);
+            this.lblTemp.TabIndex = 116;
             // 
             // StovePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.textBox);
-            this.Controls.Add(this.SetStoveLabel);
-            this.Controls.Add(this.SetTimerLabel);
-            this.Controls.Add(this.cbStove);
+            this.Controls.Add(this.cbTempStove);
             this.Controls.Add(this.Stove);
             this.Controls.Add(this.cbTimer);
             this.Controls.Add(this.TimerLabel);
@@ -539,7 +572,6 @@
             this.Controls.Add(this.Plate3);
             this.Controls.Add(this.Plate2);
             this.Controls.Add(this.Plate1);
-            this.Controls.Add(this.LabelOnOff);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.shapeContainer1);
             this.Name = "StovePanel";
@@ -572,8 +604,6 @@
         private System.Windows.Forms.Label DeviceConnected;
         private System.Windows.Forms.Label nameStove;
         private System.Windows.Forms.PictureBox StovePictureBox;
-        private System.Windows.Forms.Label LabelOnOff;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape OnOff;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private System.Windows.Forms.Label Plate1;
         private System.Windows.Forms.Label Plate2;
@@ -598,12 +628,17 @@
         private System.Windows.Forms.Label TimerLabel;
         private System.Windows.Forms.ComboBox cbTimer;
         private System.Windows.Forms.Label Stove;
-        private System.Windows.Forms.ComboBox cbStove;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape SetStove;
-        private Microsoft.VisualBasic.PowerPacks.RectangleShape SetTimer;
-        private System.Windows.Forms.Label SetTimerLabel;
-        private System.Windows.Forms.Label SetStoveLabel;
-        private System.Windows.Forms.RichTextBox textBox;
+        private System.Windows.Forms.ComboBox cbTempStove;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape DisconnectBtn;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape setTime;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape OnOff;
+        private Microsoft.VisualBasic.PowerPacks.LineShape line2;
+        private System.Windows.Forms.Label lblTimer;
+        private System.Windows.Forms.Label timerTick;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private Microsoft.VisualBasic.PowerPacks.RectangleShape startStopbtn;
+        private System.Windows.Forms.Label lblTemp;
+        private System.Windows.Forms.Label lblTm;
     }
 }

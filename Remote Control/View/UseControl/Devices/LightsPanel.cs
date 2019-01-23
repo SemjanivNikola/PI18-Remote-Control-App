@@ -30,22 +30,22 @@ namespace Remote_Control
             }
         }
 
+        //-----------------------------------------------//
+        //------------  privatni atributi  -------------//
+
+        int sec = 0;
+        int min = 0;
+        int hr = 0;
+
         string serialNum = null;
 
-        //  Update DB on disconnecting
-        void UpdateTable()
-        {
-            string sn = serialNum;
-            string sqlQuery = "UPDATE Lights SET brightness = '"+ BrightnessValue.Text +"' WHERE sn = '"+ Device.serialNum +"' ";
-            DataAccess.ExecuteSQL(sqlQuery);
-            DataAccess.ConnectionClose();
-        }
-
+        //------------  Kraj bloka  ------------//
+        //-------------------------------------//
+        
         public LightsPanel()
         {
             InitializeComponent();
         }
-
         public void LightsPanel_Load(object sender, EventArgs e)
         {
             BrightnessValue.Text = TableFill.brightness;
@@ -54,57 +54,92 @@ namespace Remote_Control
             DevConnected.Text = TableFill.inUse;
             serialNum = TableFill.sn;
 
-            SwitchPanel.activePnl = true;
-            Device.Naziv = Instance.Name;
+            PanelFunction.activePnl = true;
+            Device.Naziv = nameLights.Text;
         }
 
-        private void LabelOnOff_Click(object sender, EventArgs e)
+        //------------------------------------------------------//
+        //------------  Update DB on disconnecting ------------//
+        void UpdateTable()
         {
-            if (LabelOnOff.Text == "ON")
+            string sn = serialNum;
+            string sqlQuery = "UPDATE Lights SET brightness = '" + BrightnessValue.Text + "' WHERE sn = '" + Device.serialNum + "' ";
+            DataAccess.ExecuteSQL(sqlQuery);
+            DataAccess.ConnectionClose();
+        }
+        //------------  Kraj bloka  ------------//
+        //-------------------------------------//
+
+        //-------------------------------------//
+        //----------    Tajmer     -----------//
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            sec++;
+            if (sec > 59)
             {
-                LabelOnOff.Text = "OFF";
-                LabelOnOff.Left = 32;
-                LabelOnOff.BackColor = Color.Red;
-                OnOff.BorderColor = Color.Red;
-                OnOff.FillColor = Color.Red;
+                sec = 0;
+                min++;
+            }
+            if (min > 59)
+            {
+                hr++;
+                min = 0;
+            }
+            DevConnected.Text = ((hr % 60) >= 10 ? (hr % 60).ToString() : "0" + (hr % 60)) + " : " + ((min % 60) >= 10 ? (min % 60).ToString() : "0" + (min % 60)) + " : " + ((sec % 60) >= 10 ? (sec % 60).ToString() : "0" + (sec % 60));
+        }
+
+        //---------------------------------------//
+        //------------  ON / OFF    ------------//
+        private void OnOff_Click(object sender, EventArgs e)
+        {
+            if (Device.On == false)
+            {
+                OnOff.BackgroundImage = Properties.Resources.on;
+                Device.On = true;
             }
             else
             {
-                LabelOnOff.Text = "ON";
-                LabelOnOff.Left = 36;
-                LabelOnOff.BackColor = Color.FromArgb(255,0,192,0);
-                OnOff.BorderColor = Color.FromArgb(255, 0, 192, 0);
-                OnOff.FillColor = Color.FromArgb(255, 0, 192, 0);
+                OnOff.BackgroundImage = Properties.Resources.off;
+                Device.On = false;
             }
         }
 
+        //----------------------------------------------------//
+        //---------------    Buttons     --------------------//
         private void Minus_Click(object sender, EventArgs e)
         {
-            int Brightness = Int32.Parse(BrightnessValue.Text);
-            if (Brightness > 0)
+            if (Device.CheckOnOff() == true)
             {
-                Brightness--;
-                BrightnessValue.Text = Convert.ToString(Brightness);
+                int Brightness = Int32.Parse(BrightnessValue.Text);
+                if (Brightness > 0)
+                {
+                    Brightness--;
+                    BrightnessValue.Text = Convert.ToString(Brightness);
+                }
             }
         }
-
         private void Plus_Click(object sender, EventArgs e)
         {
-            int Brightness = Int32.Parse(BrightnessValue.Text);
-            if(Brightness < 10)
+            if (Device.CheckOnOff() == true)
             {
-                Brightness++;
-                BrightnessValue.Text = Convert.ToString(Brightness);
+                int Brightness = Int32.Parse(BrightnessValue.Text);
+                if (Brightness < 10)
+                {
+                    Brightness++;
+                    BrightnessValue.Text = Convert.ToString(Brightness);
+                }
             }
         }
-
+        
         private void DisconnectBtn_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
             UpdateTable();
             Instance.Hide();
             MessageBox.Show("Device was properly disconnected.");
-            SwitchPanel.activePnl = false;
-            MainForm.current();
+            PanelFunction.activePnl = false;
+            Device.favorit = false;
         }
     }
 }

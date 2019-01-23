@@ -33,20 +33,14 @@
             this.ToolBar = new System.Windows.Forms.MenuStrip();
             this.BackTool = new System.Windows.Forms.ToolStripMenuItem();
             this.ForrwardTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.CurrDevTool = new System.Windows.Forms.ToolStripMenuItem();
             this.RefreshTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.disconToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favouritesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuBar = new System.Windows.Forms.MenuStrip();
             this.IzbornikProgram = new System.Windows.Forms.ToolStripMenuItem();
             this.importDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quickImportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.connectToDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listOfDeviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.favouriteMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IzbornikAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.developersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +54,6 @@
             this.StatusBar = new System.Windows.Forms.StatusStrip();
             this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ConStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.MainPanel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.ToolBar.SuspendLayout();
@@ -78,9 +71,8 @@
             this.ToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BackTool,
             this.ForrwardTool,
-            this.CurrDevTool,
             this.RefreshTool,
-            this.disconToolStripMenuItem});
+            this.favouritesToolStripMenuItem});
             this.ToolBar.Location = new System.Drawing.Point(0, 24);
             this.ToolBar.Name = "ToolBar";
             this.ToolBar.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -110,28 +102,25 @@
             this.ForrwardTool.Text = "Forward";
             this.ForrwardTool.Click += new System.EventHandler(this.ForrwardTool_Click);
             // 
-            // CurrDevTool
-            // 
-            this.CurrDevTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CurrDevTool.Image = global::Remote_Control.Properties.Resources.CurrentGray;
-            this.CurrDevTool.Name = "CurrDevTool";
-            this.CurrDevTool.Padding = new System.Windows.Forms.Padding(35, 0, 4, 0);
-            this.CurrDevTool.Size = new System.Drawing.Size(63, 24);
-            this.CurrDevTool.Text = "CurrDev";
-            this.CurrDevTool.Click += new System.EventHandler(this.CurrDevTool_Click);
-            // 
             // RefreshTool
             // 
             this.RefreshTool.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.RefreshTool.Image = ((System.Drawing.Image)(resources.GetObject("RefreshTool.Image")));
+            this.RefreshTool.Image = global::Remote_Control.Properties.Resources.Refresh;
             this.RefreshTool.Name = "RefreshTool";
-            this.RefreshTool.Size = new System.Drawing.Size(32, 24);
+            this.RefreshTool.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.RefreshTool.Size = new System.Drawing.Size(44, 24);
             this.RefreshTool.Text = "Refresh";
+            this.RefreshTool.Click += new System.EventHandler(this.RefreshTool_Click);
             // 
-            // disconToolStripMenuItem
+            // favouritesToolStripMenuItem
             // 
-            this.disconToolStripMenuItem.Name = "disconToolStripMenuItem";
-            this.disconToolStripMenuItem.Size = new System.Drawing.Size(12, 24);
+            this.favouritesToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.favouritesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("favouritesToolStripMenuItem.Image")));
+            this.favouritesToolStripMenuItem.Name = "favouritesToolStripMenuItem";
+            this.favouritesToolStripMenuItem.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.favouritesToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.favouritesToolStripMenuItem.Text = "Favourites";
+            this.favouritesToolStripMenuItem.Click += new System.EventHandler(this.favouritesToolStripMenuItem_Click);
             // 
             // MenuBar
             // 
@@ -152,9 +141,7 @@
             // 
             this.IzbornikProgram.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importDeviceToolStripMenuItem,
-            this.deleteDeviceToolStripMenuItem,
-            this.connectToDeviceToolStripMenuItem,
-            this.listOfDeviceToolStripMenuItem,
+            this.favouriteMenuItem,
             this.exitToolStripMenuItem});
             this.IzbornikProgram.Name = "IzbornikProgram";
             this.IzbornikProgram.Size = new System.Drawing.Size(65, 20);
@@ -166,7 +153,7 @@
             this.quickImportToolStripMenuItem,
             this.selectDeviceToolStripMenuItem});
             this.importDeviceToolStripMenuItem.Name = "importDeviceToolStripMenuItem";
-            this.importDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.importDeviceToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.importDeviceToolStripMenuItem.Text = "Import Device";
             // 
             // quickImportToolStripMenuItem
@@ -183,51 +170,18 @@
             this.selectDeviceToolStripMenuItem.Text = "Select Device";
             this.selectDeviceToolStripMenuItem.Click += new System.EventHandler(this.selectDeviceToolStripMenuItem_Click);
             // 
-            // deleteDeviceToolStripMenuItem
+            // favouriteMenuItem
             // 
-            this.deleteDeviceToolStripMenuItem.Name = "deleteDeviceToolStripMenuItem";
-            this.deleteDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.deleteDeviceToolStripMenuItem.Text = "Delete Device";
-            // 
-            // connectToDeviceToolStripMenuItem
-            // 
-            this.connectToDeviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.item1ToolStripMenuItem,
-            this.item2ToolStripMenuItem,
-            this.item3ToolStripMenuItem});
-            this.connectToDeviceToolStripMenuItem.Name = "connectToDeviceToolStripMenuItem";
-            this.connectToDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.connectToDeviceToolStripMenuItem.Text = "Connect to Device";
-            // 
-            // item1ToolStripMenuItem
-            // 
-            this.item1ToolStripMenuItem.Name = "item1ToolStripMenuItem";
-            this.item1ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.item1ToolStripMenuItem.Text = "Item1";
-            // 
-            // item2ToolStripMenuItem
-            // 
-            this.item2ToolStripMenuItem.Name = "item2ToolStripMenuItem";
-            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.item2ToolStripMenuItem.Text = "Item2";
-            // 
-            // item3ToolStripMenuItem
-            // 
-            this.item3ToolStripMenuItem.Name = "item3ToolStripMenuItem";
-            this.item3ToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
-            this.item3ToolStripMenuItem.Text = "Item3";
-            // 
-            // listOfDeviceToolStripMenuItem
-            // 
-            this.listOfDeviceToolStripMenuItem.Name = "listOfDeviceToolStripMenuItem";
-            this.listOfDeviceToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.listOfDeviceToolStripMenuItem.Text = "List of Device";
+            this.favouriteMenuItem.Name = "favouriteMenuItem";
+            this.favouriteMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.favouriteMenuItem.Text = "Favourites";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // IzbornikAbout
             // 
@@ -243,12 +197,14 @@
             this.developersToolStripMenuItem.Name = "developersToolStripMenuItem";
             this.developersToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.developersToolStripMenuItem.Text = "Developers";
+            this.developersToolStripMenuItem.Click += new System.EventHandler(this.developersToolStripMenuItem_Click);
             // 
             // applicationToolStripMenuItem
             // 
             this.applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             this.applicationToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
             this.applicationToolStripMenuItem.Text = "Application";
+            this.applicationToolStripMenuItem.Click += new System.EventHandler(this.applicationToolStripMenuItem_Click);
             // 
             // ButtonPanel
             // 
@@ -286,7 +242,7 @@
             this.ListButton.Name = "ListButton";
             this.ListButton.Size = new System.Drawing.Size(135, 44);
             this.ListButton.TabIndex = 3;
-            this.ListButton.Text = "List of Device";
+            this.ListButton.Text = "List of Devices";
             this.ListButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ListButton.UseVisualStyleBackColor = false;
             this.ListButton.Click += new System.EventHandler(this.ListButton_Click);
@@ -349,8 +305,7 @@
             this.StatusBar.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ProgressBar,
-            this.StatusLabel,
-            this.ConStatus});
+            this.StatusLabel});
             this.StatusBar.Location = new System.Drawing.Point(0, 482);
             this.StatusBar.Name = "StatusBar";
             this.StatusBar.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
@@ -369,14 +324,6 @@
             this.StatusLabel.Name = "StatusLabel";
             this.StatusLabel.Size = new System.Drawing.Size(39, 17);
             this.StatusLabel.Text = "Ready";
-            // 
-            // ConStatus
-            // 
-            this.ConStatus.Margin = new System.Windows.Forms.Padding(635, 3, 0, 2);
-            this.ConStatus.Name = "ConStatus";
-            this.ConStatus.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ConStatus.Size = new System.Drawing.Size(79, 17);
-            this.ConStatus.Text = "Disconnected";
             // 
             // MainPanel
             // 
@@ -411,6 +358,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Remote Control App";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ToolBar.ResumeLayout(false);
             this.ToolBar.PerformLayout();
             this.MenuBar.ResumeLayout(false);
@@ -425,40 +373,32 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip ToolBar;
         private System.Windows.Forms.ToolStripMenuItem BackTool;
         private System.Windows.Forms.ToolStripMenuItem ForrwardTool;
-        private System.Windows.Forms.MenuStrip MenuBar;
-        private System.Windows.Forms.ToolStripMenuItem IzbornikProgram;
         private System.Windows.Forms.Panel ButtonPanel;
         private System.Windows.Forms.Button DelButton;
         private System.Windows.Forms.StatusStrip StatusBar;
         private System.Windows.Forms.Button ListButton;
         private System.Windows.Forms.Button ConnButton;
-        private System.Windows.Forms.ToolStripMenuItem CurrDevTool;
         private System.Windows.Forms.ToolStripMenuItem IzbornikAbout;
         private System.Windows.Forms.ToolStripProgressBar ProgressBar;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel;
-        private System.Windows.Forms.ToolStripStatusLabel ConStatus;
         private System.Windows.Forms.Button ImportButton;
         private System.Windows.Forms.Panel MainPanel;
         private System.Windows.Forms.ToolStripMenuItem importDeviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quickImportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem connectToDeviceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem item3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem listOfDeviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem favouriteMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem developersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem applicationToolStripMenuItem;
         private System.Windows.Forms.PictureBox LogoBox;
-        private System.Windows.Forms.ToolStripMenuItem RefreshTool;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem disconToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem RefreshTool;
+        private System.Windows.Forms.MenuStrip ToolBar;
+        private System.Windows.Forms.MenuStrip MenuBar;
+        private System.Windows.Forms.ToolStripMenuItem IzbornikProgram;
+        private System.Windows.Forms.ToolStripMenuItem favouritesToolStripMenuItem;
     }
 }
 
