@@ -285,6 +285,7 @@
             // inUse
             // 
             this.inUse.Enabled = true;
+            this.inUse.Interval = 1000;
             this.inUse.Tick += new System.EventHandler(this.inUse_Tick);
             // 
             // pictureBox8
@@ -559,11 +560,13 @@
             // delay
             // 
             this.delay.Enabled = true;
+            this.delay.Interval = 1000;
             this.delay.Tick += new System.EventHandler(this.delay_Tick);
             // 
             // washing
             // 
             this.washing.Enabled = true;
+            this.washing.Interval = 1000;
             this.washing.Tick += new System.EventHandler(this.washing_Tick);
             // 
             // WasMachinePanel

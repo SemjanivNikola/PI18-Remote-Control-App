@@ -54,6 +54,9 @@ namespace Remote_Control
             modelWH.Text = TableFill.model;
             DevConnected.Text = TableFill.inUse;
             tbCo2.Text = Bojler.OcitavanjePlina().ToString();
+
+            PanelFunction.activePnl = true;
+            Device.Naziv = nameWH.Text;
         }
 
         //------------------------------------------------------//

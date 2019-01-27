@@ -41,9 +41,10 @@ namespace Remote_Control
         List<Panel> panels = new List<Panel>();
 
         //  Varijable potrebne za odredivanje na koji uredaj cemo se spojiti i koje podatke iz baze cemo povuci
-        string serialNum = null;
+        public string serialNum = null;
         string devName = null;
         string selected = null;
+        public bool passCheck = false;
 
         public ConnDevPanel()
         {
@@ -55,6 +56,11 @@ namespace Remote_Control
             panels.Add(ConnDevPanel.Instance.Pnl1);
             panels.Add(ConnDevPanel.Instance.Pnl2);
             panels[index].BringToFront();
+        }
+
+        public static void Reciver(bool check)
+        {
+            Instance.passCheck = check;
         }
 
         //  Ispisivanje viewa iz baze za odredenje uredaje
@@ -79,7 +85,7 @@ namespace Remote_Control
             connTable.DataSource = ds.Tables[0];
         }
 
-        private void LoadData()
+        public void LoadData()
         {
             string sqlQuery = "SELECT * FROM '"+ devName +"' WHERE sn = '"+ serialNum +"'";
             TableFill.GetProperties(devName, sqlQuery);
@@ -190,6 +196,9 @@ namespace Remote_Control
                 string str = "SELECT Serial_Number FROM '" + devName + "_view'";
                 serialNum = DataAccess.GetSN(str, position);
                 Device.serialNum = serialNum;
+                str = "SELECT Password_Type FROM '" + devName + "_view'";
+                DataAccess.GetPT(str, position);
+
                 selected = "Device is selected!";
                 MessageBox.Show(selected);
                 selected = null;
@@ -205,9 +214,20 @@ namespace Remote_Control
             }
             else
             {
-                LoadData();
-                PanelFunction.ShowMe(devName);
-                serialNum = null;
+                if (Device.tipLozinke.Equals("NO"))
+                {
+                    LoadData();
+                    PanelFunction.ShowMe(devName);
+                    serialNum = null;
+                }
+                else
+                {
+                    string str = "SELECT pass FROM device WHERE sn = '" + serialNum + "'";
+                    DataAccess.GetPass(str);
+                    PasswordForm newCheck = new PasswordForm();
+                    PasswordForm.PassCall(devName);
+                    newCheck.Show();
+                }
             }
         }
     }

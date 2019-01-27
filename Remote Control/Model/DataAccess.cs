@@ -6,6 +6,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using Finisar.SQLite;
 using System.Windows.Forms;
+using ClassLibrary;
 //using System.Data.SQLite;
 
 namespace Remote_Control
@@ -128,6 +129,50 @@ namespace Remote_Control
             return null;
         }
 
+        public static void GetPass(string sql)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            try
+            {
+                while (reader.Read())
+                {
+                    Device.Lozinka = (string)reader["pass"];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            cmd.Dispose();
+            reader.Dispose();
+        }
+        
+        public static void GetPT(string sql, int position)
+        {
+            int br = 0;
+            SQLiteCommand cmd = new SQLiteCommand(sql, Connection);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            try
+            {
+                while (reader.Read() && br <= position)
+                {
+                    Device.tipLozinke = (string)reader["Password_Type"];
+                    br++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            cmd.Dispose();
+            reader.Dispose();
+        }
+
         //  Izvlačenje serijskog broja uređaja iz baze
         public static string GetSN(string sql, int position)
         {
@@ -144,7 +189,6 @@ namespace Remote_Control
                     br++;
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -152,7 +196,7 @@ namespace Remote_Control
 
             cmd.Dispose();
             reader.Dispose();
-
+            
             return strSN;
         }
 

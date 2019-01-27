@@ -78,3 +78,4 @@ D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Rem
 D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.DishwasherPanel.resources
 D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.RefrigeratorPanel.resources
 D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.TVPanel.resources
+D:\Faks\3 godina\Programsko Inzenjerstvo\Aplikacija\Remote Control\obj\Debug\Remote_Control.PasswordForm.resources

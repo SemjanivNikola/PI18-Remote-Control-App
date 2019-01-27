@@ -103,19 +103,9 @@ namespace Remote_Control.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Current {
+        public static System.Drawing.Bitmap correct {
             get {
-                object obj = ResourceManager.GetObject("Current", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap CurrentGray {
-            get {
-                object obj = ResourceManager.GetObject("CurrentGray", resourceCulture);
+                object obj = ResourceManager.GetObject("correct", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,16 +263,6 @@ namespace Remote_Control.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap RefreshGray {
-            get {
-                object obj = ResourceManager.GetObject("RefreshGray", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap resume {
             get {
                 object obj = ResourceManager.GetObject("resume", resourceCulture);
@@ -366,6 +346,16 @@ namespace Remote_Control.Properties {
         public static System.Drawing.Bitmap volume {
             get {
                 object obj = ResourceManager.GetObject("volume", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap wrong {
+            get {
+                object obj = ResourceManager.GetObject("wrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

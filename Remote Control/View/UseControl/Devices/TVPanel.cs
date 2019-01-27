@@ -118,7 +118,7 @@ namespace Remote_Control
                 if (Tmin < 0)
                 {
                     timer2.Stop();
-                    OnOff.BackgroundImage = Properties.Resources.on;
+                    OnOff.BackgroundImage = Properties.Resources.off;
                     Device.On = false;
                     MessageBox.Show("Device is turned off.");
                 }
