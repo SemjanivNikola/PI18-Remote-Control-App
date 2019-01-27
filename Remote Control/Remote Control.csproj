@@ -54,16 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="View\UseControl\Controls\DelDevPanel.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="View\PasswordForm.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\UseControl\Controls\DelDevPanel.designer.cs">
-      <DependentUpon>DelDevPanel.cs</DependentUpon>
+    <Compile Include="View\PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\DelDevPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\UseControl\Controls\DelDevPanel.designer.cs">
+      <DependentUpon>DelDevPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\UseControl\Devices\TVPanel.cs">
       <SubType>UserControl</SubType>
@@ -151,6 +157,9 @@
     <Compile Include="View\UseControl\Devices\WasMachinePanel.designer.cs">
       <DependentUpon>WasMachinePanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\UseControl\Controls\DelDevPanel.resx">
       <DependentUpon>DelDevPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +298,8 @@
     <Content Include="Icons\Buttons\set1.jpg" />
     <Content Include="Icons\Buttons\start.jpg" />
     <Content Include="Icons\Buttons\stop.jpg" />
+    <None Include="Icons\wrong.png" />
+    <None Include="Icons\correct.png" />
     <Content Include="Icons\Dishwasher Resources\cutlery.jpg" />
     <Content Include="Icons\Dishwasher Resources\eigdegree.JPG" />
     <Content Include="Icons\Dishwasher Resources\sevdegree.JPG" />
