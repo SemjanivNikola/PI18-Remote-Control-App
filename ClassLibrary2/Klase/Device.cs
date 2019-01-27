@@ -12,7 +12,8 @@ namespace ClassLibrary
         public static string serialNum { get; set; }
         public static  string Type { get; set; }
         public static bool On = false;
-        public string Lozinka { get; set; }
+        public static string Lozinka { get; set; }
+        public static string tipLozinke { get; set; }
         public static string Model { get; set; }
         public static bool favorit { get; set; }
 
